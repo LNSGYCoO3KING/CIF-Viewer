@@ -5,15 +5,23 @@
   <title>Polyhedral CIF Viewer</title>
   <script src="https://3dmol.org/build/3Dmol-min.js"></script>
   <style>
-    body { margin: 0; }
+    body { margin: 0; font-family: Arial, sans-serif; }
     #viewer {
       width: 100vw;
-      height: 100vh;
+      height: 90vh;
       position: relative;
+    }
+    header {
+      padding: 10px;
+      background: #333;
+      color: white;
+      font-size: 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
+  <header>Polyhedral CIF Viewer — If you can see this, HTML is loading ✅</header>
   <div id="viewer"></div>
   <script>
     const element = document.getElementById("viewer");
@@ -27,7 +35,8 @@
         viewer.setStyle({}, { polyhedra: {} });
         viewer.zoomTo();
         viewer.render();
-      });
+      })
+      .catch(err => console.error("Error loading CIF:", err));
   </script>
 </body>
 </html>
